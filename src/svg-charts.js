@@ -84,6 +84,13 @@ function generatePointsAndAnglesOnCirclePerimeter(values, colors, radius, stroke
     return adjustedPointsAndAnglesOnPerimeter;
 }
 
+/**
+ * Adds commas to a number
+ * @param {number[]} values
+ * @param {string[]} colors
+ * @param {number} radius
+ * @param {number} stroke
+ */
 function generatePieChartSVG(values, colors, radius, stroke) {
     try {
         validateInputs(values, colors, radius, stroke);
