@@ -15,6 +15,7 @@
     "charts"
   ],
   "author": "arekgofi <arekgofi@gmail.com> (https://app.arkadiuszgotfryd.pl)",
+  "homepage": "https://github.com/arekgofi/svg-charts",
   "license": "MIT",
   "dependencies": {
     "svg.js": "^2.6.3"
