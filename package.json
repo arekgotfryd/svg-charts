@@ -12,7 +12,7 @@
     "charts"
   ],
   "author": "arekgofi <arekgofi@gmail.com> (https://app.arkadiuszgotfryd.pl)",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "svg.js": "^2.6.3"
   },
