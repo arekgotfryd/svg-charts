@@ -1,6 +1,6 @@
 {
   "name": "svg-charts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Library that gives you possibility to draw pie charts in svg",
   "main": "build/index.js",
   "engines": {

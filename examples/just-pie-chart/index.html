@@ -7,24 +7,20 @@
 </head>
 
 <body>
-    <script src="./build/index.js"></script>
+    <div id="content">
+    </div>
+    <script src="../../build/index.js"></script>
     <script>
         var tests = [{ values: [1, 1, 1], colors: ['red', 'blue', 'pink'], radius: 48, stroke: 4 },
-        { values: [0, 0, 0], colors: ['red', 'blue', 'pink'], radius: 48, stroke: 4 },
-        { values: [-1, 1, 2], colors: ['red', 'blue', 'pink'], radius: 48, stroke: 4 },
         { values: [1000, 999, 999], colors: ['red', 'blue', 'pink'], radius: 48, stroke: 4 },
-        { values: [5000, 8345, 9999, 20000], colors: ['red', 'blue', 'pink'], radius: 48, stroke: 4 },
-        { values: [5000, 8345, 9999], colors: ['red', 'blue', 'pink'], radius: 0, stroke: 4 },
-        { values: [5000, 8345, 9999], colors: ['red', 'blue', 'pink'], radius: 50, stroke: -1 },
         { values: [5000, 8345, 9999], colors: ['#ccc', '#ddd', '#bbb'], radius: 50, stroke: 2 },
         { values: [5000, 8345, 9999], colors: ['#fff', 'green', 'white'], radius: 50, stroke: 2 },
         { values: [5000, 8345, 9999], colors: ['red', 'green', 'white'], radius: 50, stroke: 2 },
         { values: [5000, 8345, 9999], colors: ['red', 'green', 'white'], radius: 100, stroke: 5 }]
 
-        var svgCharts = svgCharts();
-
+        var cont = document.getElementById("content");
         tests.forEach((testSet) => {
-            console.log(svgCharts.generatePieChartSVG(testSet.values, testSet.colors, testSet.radius, testSet.stroke));
+            cont.innerHTML = cont.innerHTML + svgCharts().generatePieChartSVG(testSet.values, testSet.colors, testSet.radius, testSet.stroke);
         })
     </script>
 </body>
