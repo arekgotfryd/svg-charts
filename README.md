@@ -18,15 +18,15 @@ Library that gives you possibility to draw pie charts in svg.
 * `npm run build` build
 * open `index.html` and check console output it shows few simple tests results. 
 
-## Examples
+# Examples
 
-# Draw pie charts on google maps
+## Draw pie charts on google maps
 
 * `cd examples\google-maps`
 * `npm install`
 * open index.html in your browser
 
-# Just draw pie charts 
+## Just draw pie charts 
 * `cd examples\just-pie-chart`
 * `npm install`
 * open index.html in your browser
