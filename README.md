@@ -30,3 +30,14 @@ Library that gives you possibility to draw pie charts in svg.
 * `cd examples\just-pie-chart`
 * `npm install`
 * open index.html in your browser
+
+# API
+
+## generatePieChartSVG
+Returns pie chart svg node
+Params:
+ @param {number[]} values
+ @param {string[]} colors
+ @param {number} radius
+ @param {number} stroke
+Usage examples in examples directory
