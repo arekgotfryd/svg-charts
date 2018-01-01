@@ -34,10 +34,10 @@ Library that gives you possibility to draw pie charts in svg.
 # API
 
 ## generatePieChartSVG
-Returns pie chart svg node\n
-Params:\n
- @param {number[]} values\n
- @param {string[]} colors\n
- @param {number} radius\n
- @param {number} stroke\n
+Returns pie chart svg node  
+Params:  
+ @param {number[]} values  
+ @param {string[]} colors  
+ @param {number} radius  
+ @param {number} stroke  
 Usage examples in examples directory
