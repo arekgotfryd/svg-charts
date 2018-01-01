@@ -1,0 +1,26 @@
+{
+  "name": "svg-charts",
+  "version": "1.0.0",
+  "description": "Library that gives you possibility to draw pie charts in svg",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [
+    "svg",
+    "pie-chart",
+    "charts"
+  ],
+  "author": "arekgofi <arekgofi@gmail.com> (https://app.arkadiuszgotfryd.pl)",
+  "license": "ISC",
+  "dependencies": {
+    "svg.js": "^2.6.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.20",
+    "babel-loader": "^6.0.1",
+    "babel-preset-es2015": "^6.0.15",
+    "node-libs-browser": "^0.5.3",
+    "webpack": "^1.12.2"
+  }
+}
