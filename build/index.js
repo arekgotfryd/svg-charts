@@ -82,17 +82,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return false;
 	}
 	
-	function validateInputs(values, colors, radius, stroke) {
+	function validateInputs(values, colors, radius, strokeSize, strokeColor) {
 	    if (values.length != colors.length) {
 	        throw new Error("Values array length differs from colors array length");
 	    } else if (areValuesNegative(values)) {
 	        throw new Error("Values array must only includes positive values");
 	    } else if (areColorsInvalid(colors)) {
 	        throw new Error("Please be sure that you entered correct color values into colors input array");
+	    } else if (areColorsInvalid([strokeColor])) {
+	        throw new Error("Please be sure that you entered correct color value for stroke");
 	    } else if (radius <= 0) {
 	        throw new Error("Please be sure that radius is positive value");
-	    } else if (stroke < 0) {
-	        throw new Error("Please be sure that stroke is positive value");
+	    } else if (strokeSize < 0) {
+	        throw new Error("Please be sure that strokeSize is greater or equal zero value");
 	    }
 	}
 	
@@ -107,11 +109,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return Math.floor((value / sum).toFixed(2) * 360);
 	}
 	
-	function draw(adjustedPointsAndAnglesOnPerimeter, radius, stroke, colors) {
-	    var radiusPlusStroke = radius + stroke;
+	function draw(adjustedPointsAndAnglesOnPerimeter, radius, strokeSize, colors, strokeColor) {
+	    var radiusPlusStroke = radius + strokeSize;
 	    var div = document.createElement("div");
 	    var draw = (0, _svg2.default)(div).size(2 * radiusPlusStroke, 2 * radiusPlusStroke);
-	    var circle = draw.circle(2 * radiusPlusStroke).fill("#fff");
+	    var circle = draw.circle(2 * radiusPlusStroke).fill(strokeColor);
 	    adjustedPointsAndAnglesOnPerimeter.forEach(function (xy, i, array) {
 	        if (i == 0) {
 	            if (xy[2] > 180) {
@@ -130,7 +132,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return draw.node.outerHTML;
 	}
 	
-	function generatePointsAndAnglesOnCirclePerimeter(values, colors, radius, stroke) {
+	function generatePointsAndAnglesOnCirclePerimeter(values, colors, radius, strokeSize) {
 	    var sum = values.reduce(function (previousValue, currentValue) {
 	        return previousValue + currentValue;
 	    });
@@ -149,7 +151,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var pointsAndAnglesOnPerimeter = anglesInDegrees.map(function (angleInDegree) {
 	        return getPointsAndAnglesOnPerimeter(angleInDegree, radius);
 	    });
-	    var radiusPlusStroke = radius + stroke;
+	    var radiusPlusStroke = radius + strokeSize;
 	    var adjustedPointsAndAnglesOnPerimeter = pointsAndAnglesOnPerimeter.map(function (xy) {
 	        return [xy[0] + radiusPlusStroke, xy[1] + radiusPlusStroke, xy[2]];
 	    });
@@ -157,16 +159,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return adjustedPointsAndAnglesOnPerimeter;
 	}
 	
-	function generatePieChartSVG(values, colors, radius, stroke) {
+	/**
+	 * Adds commas to a number
+	 * @param {number[]} values
+	 * @param {string[]} colors
+	 * @param {number} radius
+	 * @param {number} [strokeSize=0]
+	 * @param {string} [strokeColor="white"]
+	 */
+	function generatePieChartSVG(values, colors, radius) {
+	    var strokeSize = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
+	    var strokeColor = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'white';
+	
 	    try {
-	        validateInputs(values, colors, radius, stroke);
+	        validateInputs(values, colors, radius, strokeSize, strokeColor);
 	    } catch (error) {
-	        console.log(error.message);
+	        console.error(error.message);
 	        return;
 	    }
 	
-	    var adjustedPointsAndAnglesOnPerimeter = generatePointsAndAnglesOnCirclePerimeter(values, colors, radius, stroke);
-	    return draw(adjustedPointsAndAnglesOnPerimeter, radius, stroke, colors);
+	    var adjustedPointsAndAnglesOnPerimeter = generatePointsAndAnglesOnCirclePerimeter(values, colors, radius, strokeSize);
+	    return draw(adjustedPointsAndAnglesOnPerimeter, radius, strokeSize, colors, strokeColor);
 	}
 	
 	module.exports = svgCharts;

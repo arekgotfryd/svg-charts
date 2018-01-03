@@ -15,20 +15,25 @@ Library that gives you possibility to draw pie charts in svg.
 
 ## Usage
 
-* `npm run build` build
-* open `index.html` and check console output it shows few simple tests results. 
+* import  
+`import svgCharts from 'svg-charts`  
+`var svgc = svgCharts()`  
+`svgc.generatePieChartSVG(values,colors,radius,strokeSize,strokeColor);`  
+
+* script  
+`<script src="build/index.js"></script>`  
+`var svgc = svgCharts()`  
+`svgc.generatePieChartSVG(values,colors,radius,strokeSize,strokeColor);`  
 
 # Examples
 
 ## Draw pie charts on google maps
 
 * `cd examples\google-maps`
-* `npm install`
 * open index.html in your browser
 
 ## Just draw pie charts 
 * `cd examples\just-pie-chart`
-* `npm install`
 * open index.html in your browser
 
 # API
@@ -39,5 +44,5 @@ Params:
  @param {number[]} values  
  @param {string[]} colors  
  @param {number} radius  
- @param {number} stroke  
-Usage examples in examples directory
+ @param {number} [strokeSize=0]  
+ @param {string} [strokeColor="white"]  

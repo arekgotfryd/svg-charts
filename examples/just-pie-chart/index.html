@@ -11,16 +11,22 @@
     </div>
     <script src="../../build/index.js"></script>
     <script>
-        var tests = [{ values: [1, 1, 1], colors: ['red', 'blue', 'pink'], radius: 48, stroke: 4 },
-        { values: [1000, 999, 999], colors: ['red', 'blue', 'pink'], radius: 48, stroke: 4 },
-        { values: [5000, 8345, 9999], colors: ['#ccc', '#ddd', '#bbb'], radius: 50, stroke: 2 },
-        { values: [5000, 8345, 9999], colors: ['#fff', 'green', 'white'], radius: 50, stroke: 2 },
-        { values: [5000, 8345, 9999], colors: ['red', 'green', 'white'], radius: 50, stroke: 2 },
-        { values: [5000, 8345, 9999], colors: ['red', 'green', 'white'], radius: 100, stroke: 5 }]
+        var tests = [{ values: [1, 1, 1], colors: ['red', 'blue', 'pink'], radius: 48, strokeSize: 4 },
+        { values: [1000, 999, 999], colors: ['red', 'blue', 'pink'], radius: 48, strokeSize: 4 },
+        { values: [5000, 8345, 9999], colors: ['#ccc', '#ddd', '#bbb'], radius: 50, strokeSize: 2 },
+        { values: [5000, 8345, 9999], colors: ['#fff', 'green', 'white'], radius: 50, strokeSize: 2 },
+        { values: [5000, 8345, 9999], colors: ['red', 'green', 'white'], radius: 50, strokeSize: 2 },
+        { values: [5000, 8345, 9999], colors: ['red', 'green', 'white'], radius: 100, strokeSize: 5, strokeColor: "red"},
+        { values: [5000, 8345, 9999], colors: ['red', 'green', 'white'], radius: 100, strokeSize: 5, strokeColor: "green" }]
 
         var cont = document.getElementById("content");
         tests.forEach((testSet) => {
-            cont.innerHTML = cont.innerHTML + svgCharts().generatePieChartSVG(testSet.values, testSet.colors, testSet.radius, testSet.stroke);
+            cont.innerHTML = cont.innerHTML + svgCharts().generatePieChartSVG(
+                testSet.values,
+                testSet.colors,
+                testSet.radius,
+                testSet.strokeSize,
+                testSet.strokeColor);
         })
     </script>
 </body>
